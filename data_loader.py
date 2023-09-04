@@ -18,14 +18,9 @@ class PGM_dataset(Dataset):
         trian_mode: if True, the dataset will be shuffled
     '''
 
-    def __init__(self, root_folder: str, transform:Compose=None, train_mode:bool = False):
+    def __init__(self, root_folder: str, transform:Compose=None):
         self.transform = transform
-        self.train_mode = train_mode
         self.file_names = glob(path.join(root_folder, '*.npz'))
-
-        if self.train_mode:
-            idx = list(range(len(self.file_names)))
-            np.random.shuffle(idx)
 
     def __len__(self)->int:
         return len(self.file_names)
@@ -36,7 +31,6 @@ class PGM_dataset(Dataset):
         target = data['target']
         del data
             
-
         if self.transform:
             transformed_image = self.transform(image)
             target = torch.tensor(target, dtype=torch.long)
