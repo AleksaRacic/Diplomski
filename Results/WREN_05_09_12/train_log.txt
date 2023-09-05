@@ -14,3 +14,7 @@ Epoch 02: Batch_idx 7500: Acc_val 31.02500000: Acc_train 30.05166667: Loss 1.938
 Epoch 02: Batch_idx 11250: Acc_val 31.21000000: Acc_train 30.29416667: Loss 1.93573906: Time 09/05/23-15:24:07
 Epoch 02: Batch_idx 15000: Acc_val 31.32500000: Acc_train 30.76916667: Loss 1.93271224: Time 09/05/23-15:35:10
 Epoch 02: Batch_idx 18750: Acc_val 31.52500000: Acc_train 31.05083333: Loss 1.93011275: Time 09/05/23-15:48:36
+Epoch 02: Batch_idx 22500: Acc_val 32.00000000: Acc_train 31.01083333: Loss 1.93059533: Time 09/05/23-16:02:31
+Epoch 02: Batch_idx 26250: Acc_val 31.72500000: Acc_train 31.06083333: Loss 1.92994007: Time 09/05/23-16:17:47
+Epoch 02: Batch_idx 30000: Acc_val 32.16500000: Acc_train 31.27833333: Loss 1.92891393: Time 09/05/23-16:35:10
+Epoch 02: Batch_idx 33750: Acc_val 32.65500000: Acc_train 31.60333333: Loss 1.92536847: Time 09/05/23-16:53:31

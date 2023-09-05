@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-from Models.WREN.wren import Wild_Relation_Network
+from Models.wren import Wild_Relation_Network
 from data_loader import PGM_dataset
 from utils import get_transforms
 import torch

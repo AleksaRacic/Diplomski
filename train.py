@@ -5,7 +5,7 @@ import os
 from tqdm import trange
 from zipfile import BadZipFile
 
-from Models.WREN.wren import Wild_Relation_Network
+from Models.wren import WildRelationNetworkPairs
 from data_loader import PGM_dataset
 from utils import get_transforms
 from datetime import datetime
@@ -26,7 +26,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.device_count() > 0:
     print("Available: ", torch.cuda.device_count(), "GPUs")
 
-model = Wild_Relation_Network().to(device)
+model = WildRelationNetworkPairs().to(device)
 optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=LR)
 loss_fn = torch.nn.CrossEntropyLoss().to(device)
 
@@ -131,7 +131,7 @@ def train(save_path_model : str):
 
 if __name__ == '__main__':
     time_now = datetime.now().strftime('_%H_%d_%m')
-    results_folder = 'Results/WREN'+time_now
+    results_folder = 'Results/' + model.__class__.__name__ + time_now
     if not os.path.exists(results_folder):
         os.makedirs(results_folder)
 

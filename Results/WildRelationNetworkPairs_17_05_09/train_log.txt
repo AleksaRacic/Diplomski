@@ -1,0 +1,1 @@
+Batch size 32: Num epochs 02: LR 0.00010000: Val frequency 10: Img Size 160: Time 09/05/23-17:38:12

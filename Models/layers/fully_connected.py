@@ -20,13 +20,12 @@ class LinearBn(nn.Module):
 
 class DeepLinearLayerG(nn.Module):
     """Funkcija koja trazi relacije izmedju svakog para panela."""
-    def __init__(self):
+    def __init__(self, in_channels: int, out_channels: int):
         super(DeepLinearLayerG, self).__init__()
         self.fc = nn.Sequential(
-            LinearBn(5202, 512), #ulaz je 5202 jer je to velicina izlaza iz KNN-a
-            LinearBn(512, 512),
-            LinearBn(512, 512),
-            LinearBn(512, 512)
+            LinearBn(in_channels, in_channels),
+            LinearBn(in_channels, in_channels),
+            LinearBn(in_channels, out_channels)
         )
     def forward(self, x: Tensor) ->Tensor:
         x = self.fc(x)
@@ -35,14 +34,14 @@ class DeepLinearLayerG(nn.Module):
 
 class DeepLinearLayerF(nn.Module):
     """Funkcija koja ocenjuje svaki choice panel"""
-    def __init__(self):
+    def __init__(self, in_channels: int, out_channels: int, dropout: float = 0.5):
         super(DeepLinearLayerF, self).__init__()
-        self.mlp = nn.Sequential(
-            LinearBn(512, 256),
-            LinearBn(256, 256),
-            #.Dropout(0.5),
-            nn.Linear(256, 1)
+        self.fc = nn.Sequential(
+            LinearBn(in_channels, out_channels),
+            LinearBn(out_channels, out_channels),
+            nn.Dropout(dropout),
+            nn.Linear(out_channels, out_channels)
         )
     def forward(self, x: Tensor) -> Tensor:
-        x = self.mlp(x)
+        x = self.fc(x)
         return x
