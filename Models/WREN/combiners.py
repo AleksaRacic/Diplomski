@@ -32,7 +32,7 @@ class TagPannels(torch.nn.Module):
 
     def forward(self, panel_embeddings: torch.Tensor) -> torch.Tensor:
         batch_size, number_panels, _ = panel_embeddings.shape
-        tags = torch.zeros((number_panels, 9), device=panel_embeddings.device).type_as(panel_embeddings) #TODO 16 je hardkodovano - treba da bude velicina num_panels, a 9 je velicina rejvenove matrice
+        tags = torch.zeros((number_panels, 9), device=panel_embeddings.device).type_as(panel_embeddings)
         tags[:9, :9] = torch.eye(9, device=panel_embeddings.device).type_as(panel_embeddings)
         tags[9:, 8] = torch.ones(7, device=panel_embeddings.device).type_as(panel_embeddings)
         tags = tags.expand((batch_size, -1, -1))
