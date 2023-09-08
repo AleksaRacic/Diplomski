@@ -1,6 +1,6 @@
 from datetime import datetime
 import json
-from Models.wren import Wild_Relation_Network
+from Models.wren import WildRelationNetworkPairs
 from data_loader import PGM_dataset
 from utils import get_transforms
 import torch
@@ -10,8 +10,8 @@ from tqdm import trange
 BATCH_SIZE = 16
 WORKERS = 4
 
-MODEL_ROOT_FOLDER = 'Results/WREN38'
-MODEL_NAME = 'model_02.pth'
+MODEL_ROOT_FOLDER = 'Results/WildRelationNetworkPairs_23_06_09'
+MODEL_NAME = 'model_10.pth'
 MODEL_PATH = MODEL_ROOT_FOLDER+'/'+MODEL_NAME
 TEST_SAVE_NAME = 'test_acc.txt'
 TEST_METRICS_NAME = 'test_metrics.json'
@@ -22,7 +22,7 @@ TEST_METRICS_PATH = MODEL_ROOT_FOLDER+'/'+TEST_METRICS_NAME
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-model = Wild_Relation_Network().to(device)
+model = WildRelationNetworkPairs().to(device)
 
 tf = get_transforms()
 test_set = PGM_dataset(TEST_DATAST_PATH, tf)

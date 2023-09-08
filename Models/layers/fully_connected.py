@@ -23,9 +23,9 @@ class DeepLinearLayerG(nn.Module):
     def __init__(self, in_channels: int, out_channels: int):
         super(DeepLinearLayerG, self).__init__()
         self.fc = nn.Sequential(
-            LinearBn(in_channels, in_channels),
-            LinearBn(in_channels, in_channels),
-            LinearBn(in_channels, out_channels)
+            LinearBn(in_channels, out_channels),
+            LinearBn(out_channels, out_channels),
+            LinearBn(out_channels, out_channels)
         )
     def forward(self, x: Tensor) ->Tensor:
         x = self.fc(x)
@@ -37,10 +37,11 @@ class DeepLinearLayerF(nn.Module):
     def __init__(self, in_channels: int, out_channels: int, dropout: float = 0.5):
         super(DeepLinearLayerF, self).__init__()
         self.fc = nn.Sequential(
-            LinearBn(in_channels, out_channels),
-            LinearBn(out_channels, out_channels),
+            LinearBn(in_channels, 256),
+            LinearBn(256, 256),
+            LinearBn(256, 13),
             nn.Dropout(dropout),
-            nn.Linear(out_channels, out_channels)
+            nn.Linear(13, out_channels)
         )
     def forward(self, x: Tensor) -> Tensor:
         x = self.fc(x)

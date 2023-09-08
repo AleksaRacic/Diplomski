@@ -10,8 +10,13 @@ from data_loader import PGM_dataset
 from utils import get_transforms
 from datetime import datetime
 
+MODEL_ROOT_FOLDER = 'Results/WildRelationNetworkPairs_23_06_09'
+MODEL_NAME = 'model_10.pth'
+MODEL_PATH = MODEL_ROOT_FOLDER+'/'+MODEL_NAME
+
+START_EPOCH = 10
 BATCH_SIZE = 32
-NUM_EPOCHS = 10
+NUM_EPOCHS = 16
 IMG_SIZE = 160
 WORKERS = 4
 LR = 0.0001
@@ -64,7 +69,7 @@ def validation_accuracy():
 
 def train(save_path_model : str):
 
-    for epoch in range(1, NUM_EPOCHS + 1):
+    for epoch in range(START_EPOCH, NUM_EPOCHS + 1):
         model.train()
         metrics = {'loss': [], 'correct': [], 'count': []}
 
@@ -130,10 +135,7 @@ def train(save_path_model : str):
     return metrics
 
 if __name__ == '__main__':
-    time_now = datetime.now().strftime('_%H_%d_%m')
-    results_folder = 'Results/' + model.__class__.__name__ + time_now
-    if not os.path.exists(results_folder):
-        os.makedirs(results_folder)
+    model.load_state_dict(torch.load(MODEL_PATH))
 
-    train(results_folder)
+    train(MODEL_ROOT_FOLDER)
     

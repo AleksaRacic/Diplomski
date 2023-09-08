@@ -1,0 +1,50 @@
+Batch size 32: Num epochs 02: LR 0.00010000: Val frequency 10: Img Size 160: Time 09/06/23-11:40:02
+Epoch 01: Batch_idx 3750: Acc_val 16.28500000: Acc_train 13.36143695: Loss 2.07803016: Time 09/06/23-11:46:45
+Epoch 01: Batch_idx 7500: Acc_val 17.91000000: Acc_train 15.78916667: Loss 2.06498803: Time 09/06/23-11:53:54
+Epoch 01: Batch_idx 11250: Acc_val 18.17000000: Acc_train 16.66166667: Loss 2.05782813: Time 09/06/23-12:01:59
+Epoch 01: Batch_idx 15000: Acc_val 20.17000000: Acc_train 17.62916667: Loss 2.05200664: Time 09/06/23-12:10:55
+Epoch 01: Batch_idx 18750: Acc_val 20.80000000: Acc_train 18.74166667: Loss 2.04270031: Time 09/06/23-12:21:18
+Epoch 01: Batch_idx 22500: Acc_val 21.93500000: Acc_train 19.64833333: Loss 2.03407000: Time 09/06/23-12:32:55
+Epoch 01: Batch_idx 26250: Acc_val 23.80500000: Acc_train 20.69083333: Loss 2.02560470: Time 09/06/23-12:46:28
+Epoch 01: Batch_idx 30000: Acc_val 26.33000000: Acc_train 22.24416667: Loss 2.01338464: Time 09/06/23-13:02:28
+Epoch 01: Batch_idx 33750: Acc_val 28.02000000: Acc_train 24.91250000: Loss 1.99194859: Time 09/06/23-13:21:13
+Batch size 32: Num epochs 02: LR 0.00010000: Val frequency 10: Img Size 160: Time 09/06/23-13:43:01
+Epoch 02: Batch_idx 3750: Acc_val 28.46000000: Acc_train 26.29965343: Loss 1.97733383: Time 09/06/23-13:52:14
+Epoch 02: Batch_idx 7500: Acc_val 29.23500000: Acc_train 27.16666667: Loss 1.97044283: Time 09/06/23-14:01:29
+Epoch 02: Batch_idx 11250: Acc_val 27.17500000: Acc_train 27.43083333: Loss 1.96540080: Time 09/06/23-14:11:07
+Epoch 02: Batch_idx 15000: Acc_val 28.86500000: Acc_train 27.73583333: Loss 1.96100927: Time 09/06/23-14:21:06
+Epoch 02: Batch_idx 18750: Acc_val 26.27000000: Acc_train 27.96583333: Loss 1.95805620: Time 09/06/23-14:31:40
+Epoch 02: Batch_idx 22500: Acc_val 21.82000000: Acc_train 28.12500000: Loss 1.95494937: Time 09/06/23-14:42:53
+Epoch 02: Batch_idx 26250: Acc_val 24.42500000: Acc_train 28.39583333: Loss 1.95260037: Time 09/06/23-14:55:20
+Epoch 02: Batch_idx 30000: Acc_val 17.53000000: Acc_train 28.70750000: Loss 1.95005300: Time 09/06/23-15:09:58
+Epoch 02: Batch_idx 33750: Acc_val 21.11000000: Acc_train 28.52583333: Loss 1.95015109: Time 09/06/23-15:28:44
+Batch size 32: Num epochs 05: LR 0.00100000: Val frequency 10: Img Size 160: Time 09/06/23-16:43:17
+Epoch 03: Batch_idx 3750: Acc_val 15.56000000: Acc_train 16.75886430: Loss 2.06066279: Time 09/06/23-16:50:44
+Epoch 03: Batch_idx 7500: Acc_val 24.72000000: Acc_train 23.17083333: Loss 2.00519803: Time 09/06/23-16:58:38
+Epoch 03: Batch_idx 11250: Acc_val 19.67000000: Acc_train 26.91750000: Loss 1.96865259: Time 09/06/23-17:06:50
+Epoch 03: Batch_idx 15000: Acc_val 12.18000000: Acc_train 28.04083333: Loss 1.95716776: Time 09/06/23-17:15:40
+Epoch 03: Batch_idx 18750: Acc_val 17.23000000: Acc_train 28.26916667: Loss 1.95264862: Time 09/06/23-17:24:36
+Epoch 03: Batch_idx 22500: Acc_val 22.91500000: Acc_train 28.70500000: Loss 1.94821179: Time 09/06/23-17:34:15
+Epoch 03: Batch_idx 26250: Acc_val 19.29000000: Acc_train 28.94750000: Loss 1.94697522: Time 09/06/23-17:45:05
+Epoch 03: Batch_idx 30000: Acc_val 23.48000000: Acc_train 29.30000000: Loss 1.94249244: Time 09/06/23-17:57:44
+Epoch 03: Batch_idx 33750: Acc_val 22.65500000: Acc_train 29.59166667: Loss 1.94014156: Time 09/06/23-18:14:04
+Batch size 32: Num epochs 05: LR 0.00100000: Val frequency 10: Img Size 160: Time 09/06/23-18:32:00
+Epoch 04: Batch_idx 3750: Acc_val 22.38000000: Acc_train 29.89536124: Loss 1.93712641: Time 09/06/23-18:39:00
+Epoch 04: Batch_idx 7500: Acc_val 20.59000000: Acc_train 30.08916667: Loss 1.93529997: Time 09/06/23-18:46:22
+Epoch 04: Batch_idx 11250: Acc_val 22.69500000: Acc_train 30.01666667: Loss 1.93546764: Time 09/06/23-18:54:10
+Epoch 04: Batch_idx 15000: Acc_val 19.60500000: Acc_train 30.23666667: Loss 1.93359761: Time 09/06/23-19:02:22
+Epoch 04: Batch_idx 18750: Acc_val 21.76500000: Acc_train 30.43916667: Loss 1.93088564: Time 09/06/23-19:11:00
+Epoch 04: Batch_idx 22500: Acc_val 23.18500000: Acc_train 30.38000000: Loss 1.93213986: Time 09/06/23-19:20:12
+Epoch 04: Batch_idx 26250: Acc_val 21.07500000: Acc_train 30.47333333: Loss 1.93127018: Time 09/06/23-19:30:24
+Epoch 04: Batch_idx 30000: Acc_val 23.71500000: Acc_train 30.74083333: Loss 1.92976067: Time 09/06/23-19:42:22
+Epoch 04: Batch_idx 33750: Acc_val 20.66500000: Acc_train 30.64166667: Loss 1.92850234: Time 09/06/23-19:58:13
+Batch size 32: Num epochs 05: LR 0.00100000: Val frequency 10: Img Size 160: Time 09/06/23-20:15:40
+Epoch 05: Batch_idx 3750: Acc_val 21.68000000: Acc_train 30.74846708: Loss 1.92722672: Time 09/06/23-20:22:44
+Epoch 05: Batch_idx 7500: Acc_val 16.94000000: Acc_train 30.71000000: Loss 1.92785317: Time 09/06/23-20:30:07
+Epoch 05: Batch_idx 11250: Acc_val 23.42000000: Acc_train 30.94250000: Loss 1.92688632: Time 09/06/23-20:37:59
+Epoch 05: Batch_idx 15000: Acc_val 19.51500000: Acc_train 31.32333333: Loss 1.92471608: Time 09/06/23-20:46:21
+Epoch 05: Batch_idx 18750: Acc_val 24.46000000: Acc_train 31.05083333: Loss 1.92544661: Time 09/06/23-20:55:20
+Epoch 05: Batch_idx 22500: Acc_val 18.57500000: Acc_train 31.17583333: Loss 1.92533162: Time 09/06/23-21:05:15
+Epoch 05: Batch_idx 26250: Acc_val 22.65500000: Acc_train 31.03000000: Loss 1.92534230: Time 09/06/23-21:16:27
+Epoch 05: Batch_idx 30000: Acc_val 20.70500000: Acc_train 31.12000000: Loss 1.92517829: Time 09/06/23-21:30:11
+Epoch 05: Batch_idx 33750: Acc_val 22.38000000: Acc_train 31.43500000: Loss 1.92243561: Time 09/06/23-21:46:05

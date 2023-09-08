@@ -19,9 +19,11 @@ class WildRelationNetworkPairs(torch.nn.Module):
         self.pannel_embedding_size = NUM_CHANNELS * 9 * 9
         self.pannel_embedding_tuple_size = 2 * (self.pannel_embedding_size + 9)
 
-        self.g_function = DeepLinearLayerG(in_channels=self.pannel_embedding_tuple_size, out_channels=self.pannel_embedding_tuple_size)
-        self.f_function = DeepLinearLayerF(in_channels=self.pannel_embedding_tuple_size, out_channels=1, dropout=0.5)
-        self.norm = torch.nn.LayerNorm(self.pannel_embedding_tuple_size)
+        self.out_channels = 256
+
+        self.g_function = DeepLinearLayerG(in_channels=self.pannel_embedding_tuple_size, out_channels= self.out_channels)
+        self.f_function = DeepLinearLayerF(in_channels= self.out_channels, out_channels=1, dropout=0.5)
+        self.norm = torch.nn.LayerNorm(self.out_channels)
 
     def forward(self, x:torch.Tensor) -> torch.Tensor:
         batch_size, num_panels, height, width = x.size() #izvlacimo dimenzije ulaznog tensora
