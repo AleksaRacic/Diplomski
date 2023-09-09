@@ -1,0 +1,24 @@
+CNN_MLP(
+  (cnn): CNN(
+    (layers): Sequential(
+      (0): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2))
+      (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (2): ReLU()
+      (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+      (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (5): ReLU()
+      (6): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+      (7): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (8): ReLU()
+      (9): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+      (10): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (11): ReLU()
+    )
+  )
+  (fc): Sequential(
+    (0): Linear(in_features=2592, out_features=512, bias=True)
+    (1): ReLU()
+    (2): Dropout(p=0.5, inplace=False)
+    (3): Linear(in_features=512, out_features=8, bias=True)
+  )
+)

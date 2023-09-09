@@ -29,10 +29,14 @@ class PGM_dataset(Dataset):
         data = np.load(self.file_names[idx])
         image = data['image'].reshape(16, 160, 160)
         target = data['target']
+        meta_target = data["meta_target"]
+        if meta_target.dtype == np.int8:
+            meta_target = meta_target.astype(np.uint8)
+
         del data
-            
+
         if self.transform:
             transformed_image = self.transform(image)
             target = torch.tensor(target, dtype=torch.long)
-        
-        return transformed_image, target
+            meta_target = torch.tensor(meta_target, dtype=torch.float32)
+        return transformed_image, target, meta_target
