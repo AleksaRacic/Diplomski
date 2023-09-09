@@ -1,1 +1,1 @@
-from cnn_mlp import *
+from .cnn_mlp import CNN_MLP

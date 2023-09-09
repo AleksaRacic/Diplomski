@@ -1,13 +1,13 @@
 import numpy as np
 import torch
 import os
+import Models_V2
 
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:512"
 
 from tqdm import trange
 from zipfile import BadZipFile
 
-from Models_V2 import *
 from data_loader import PGM_dataset
 from utils import get_transforms
 from datetime import datetime
@@ -28,9 +28,11 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 if torch.cuda.device_count() > 0:
     print("Available: ", torch.cuda.device_count(), "GPUs")
 
-model = CNN_MLP().to(device)
-optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=LR, betas=(0.9, 0.999), eps=1e-08)
-loss_fn = torch.nn.CrossEntropyLoss().to(device)
+'''
+    Change the model type here
+    
+'''
+model = Models_V2.CNN_MLP(LR, 0.9, 0.999, 1e-08).to(device)
 
 tf = get_transforms()
 

@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class BaseModel(nn.Module):
-    def __init__(self, args):
+    def __init__(self):
         super(BaseModel, self).__init__()
 
     def load_model(self, path, epoch):
@@ -16,7 +16,7 @@ class BaseModel(nn.Module):
         return str(self)
 
     def compute_loss(self, output, target, meta_target):
-        pass
+        raise NotImplementedError
 
     def train_(self, input, target, meta_target):
         self.optimizer.zero_grad()

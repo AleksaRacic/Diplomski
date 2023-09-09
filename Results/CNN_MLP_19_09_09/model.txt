@@ -1,0 +1,22 @@
+CNN_MLP(
+  (conv): conv_module(
+    (conv1): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2))
+    (batch_norm1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU()
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+    (batch_norm2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu2): ReLU()
+    (conv3): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+    (batch_norm3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu3): ReLU()
+    (conv4): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+    (batch_norm4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu4): ReLU()
+  )
+  (mlp): mlp_module(
+    (fc1): Linear(in_features=512, out_features=512, bias=True)
+    (relu1): ReLU()
+    (fc2): Linear(in_features=512, out_features=8, bias=True)
+    (dropout): Dropout(p=0.5, inplace=False)
+  )
+)
