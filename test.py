@@ -1,6 +1,8 @@
-from datetime import datetime
 import json
-from Models.wren import WildRelationNetworkPairs
+import Models_V2
+
+from datetime import datetime
+
 from data_loader import PGM_dataset
 from utils import get_transforms
 import torch
@@ -10,8 +12,10 @@ from tqdm import trange
 BATCH_SIZE = 16
 WORKERS = 4
 
-MODEL_ROOT_FOLDER = 'Results/WildRelationNetworkPairs_23_06_09'
-MODEL_NAME = 'model_10.pth'
+LR = 0
+
+MODEL_ROOT_FOLDER = 'Results/CNN_MLP_19_09_09'
+MODEL_NAME = 'CNN_MLP_19_09_09CNN_MLP_epoch_16.pth'
 MODEL_PATH = MODEL_ROOT_FOLDER+'/'+MODEL_NAME
 TEST_SAVE_NAME = 'test_acc.txt'
 TEST_METRICS_NAME = 'test_metrics.json'
@@ -22,7 +26,7 @@ TEST_METRICS_PATH = MODEL_ROOT_FOLDER+'/'+TEST_METRICS_NAME
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-model = WildRelationNetworkPairs().to(device)
+model = model = Models_V2.CNN_MLP(LR, 0.9, 0.999, 1e-08).to(device)
 
 tf = get_transforms()
 test_set = PGM_dataset(TEST_DATAST_PATH, tf)
@@ -35,19 +39,16 @@ def test():
 
     test_loader_iter = iter(test_loader)
     for idx in trange(len(test_loader_iter)):
-        image, target = next(test_loader_iter)
+        image, target, meta_target = next(test_loader_iter)
 
         image = torch.autograd.Variable(image, requires_grad=False).to(device)
         target = torch.autograd.Variable(target, requires_grad=False).to(device)
+        meta_target = target = torch.autograd.Variable(meta_target, requires_grad=False).to(device)
 
-        with torch.no_grad():
-            predict = model(image)
-
-        pred = torch.max(predict[:, :], 1)[1]
-        correct = pred.eq(target.data).cpu().sum().numpy()
+        correct, count = model.test_(image, target, meta_target)
 
         metrics['correct'].append(correct)
-        metrics['count'].append(target.size(0))
+        metrics['count'].append(count)
 
     return metrics
 

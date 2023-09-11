@@ -7,10 +7,10 @@ class BaseModel(nn.Module):
         super(BaseModel, self).__init__()
 
     def load_model(self, path, epoch):
-        self.state_dict = torch.load(path+'{}_epoch_{}.pth'.format(self.__class__.__name__, epoch))
+        self.state_dict = torch.load(path+'/{}_epoch_{}.pth'.format(self.__class__.__name__, epoch))
 
     def save_model(self, path, epoch):
-        torch.save(self.state_dict(), path+'{}_epoch_{}.pth'.format(self.__class__.__name__, epoch))
+        torch.save(self.state_dict(), path+'/{}_epoch_{}.pth'.format(self.__class__.__name__, epoch))
     
     def get_arhitecture(self):
         return str(self)
