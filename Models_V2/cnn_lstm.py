@@ -9,7 +9,6 @@ from .base_model import BaseModel
 from .layers import CNN
 
 
-
 class lstm_module(nn.Module):
     def __init__(self):
         super(lstm_module, self).__init__()
@@ -22,6 +21,7 @@ class lstm_module(nn.Module):
         hidden, _ = self.lstm(x)
         score = self.fc(hidden[-1, :, :])
         return score
+
 
 class CNN_LSTM(BaseModel):
     def __init__(self, lr, beta1, beta2, epsilon):
@@ -45,7 +45,6 @@ class CNN_LSTM(BaseModel):
     def forward(self, x):
         batch = x.shape[0]
         features = self.conv(x.view(-1, 1, 80, 80))
-        x.view(-1, 16, 8*4*4)
-        features = torch.cat([features, self.tags.unsqueeze(0).expand(batch, -1, -1)], dim=-1)
+        features = torch.cat([features.view(-1, 16, 8*4*4), self.tags.unsqueeze(0).expand(batch, -1, -1)], dim=-1)
         score = self.lstm(features)
         return score, None

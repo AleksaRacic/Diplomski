@@ -32,7 +32,7 @@ if torch.cuda.device_count() > 0:
     Change the model type here
     
 '''
-model = Models_V2.CNN_MLP(LR, 0.9, 0.999, 1e-08).to(device)
+model = Models_V2.CNN_LSTM(LR, 0.9, 0.999, 1e-08).to(device)
 
 tf = get_transforms()
 
@@ -43,6 +43,8 @@ val_set = PGM_dataset(validation_dataset_path, tf)
 
 train_loader = torch.utils.data.DataLoader(train_set, batch_size=BATCH_SIZE, shuffle=True, num_workers=WORKERS, pin_memory=True)
 val_loader = torch.utils.data.DataLoader(val_set, batch_size=BATCH_SIZE, shuffle=True, num_workers=WORKERS, pin_memory=True)
+
+history = {'val_acc': []}
 
 def validation_accuracy():
     model.eval()
@@ -85,10 +87,14 @@ def train(epoch, save_path_model : str):
         metrics['correct'].append(correct)
         metrics['count'].append(count)
 
-        if batch_idx > 1 and batch_idx % val_period == 0:
+        if (batch_idx > 1 and batch_idx % val_period == 0) or batch_idx == len(train_loader_iter) - 1:
             print('Epoch: {:d}/{:d},  Loss: {:.8f}'.format(epoch, NUM_EPOCHS, np.mean(metrics['loss'])))
 
             acc_val = validation_accuracy()
+            
+            if batch_idx == len(train_loader_iter) - 1:
+                history['val_acc'].append(acc_val)
+
             print(' Validation Accuracy: {:.8f} \n'.format(acc_val))
 
             acc_train= 100 * np.sum(metrics['correct']) / np.sum(metrics['count'])
@@ -105,9 +111,14 @@ def train(epoch, save_path_model : str):
     accuracy = 100 * np.sum(metrics['correct']) / np.sum(metrics['count'])
 
     print('Epoch: {:d}/{:d},  Loss: {:.8f}, Acc: {:.8f}'.format(epoch, NUM_EPOCHS, np.mean(metrics['loss']),
-                                                                accuracy))
-    if epoch > 0:
-        model.save_model(save_path_model, epoch)
+                                                              accuracy))
+
+    model.save_model(save_path_model, epoch)
+    if epoch > 5:
+        if history['val_acc'][-1] < history['val_acc'][-2] and history['val_acc'][-2] < history['val_acc'][-3]:
+            print('Early stopping')
+            exit(0)
+        
 
     return metrics
 

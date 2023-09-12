@@ -14,8 +14,8 @@ WORKERS = 4
 
 LR = 0
 
-MODEL_ROOT_FOLDER = 'Results/CNN_MLP_19_09_09'
-MODEL_NAME = 'CNN_MLP_19_09_09CNN_MLP_epoch_16.pth'
+MODEL_ROOT_FOLDER = 'Results/CNN_LSTM_21_11_09'
+MODEL_NAME = 'CNN_LSTM_epoch_16.pth'
 MODEL_PATH = MODEL_ROOT_FOLDER+'/'+MODEL_NAME
 TEST_SAVE_NAME = 'test_acc.txt'
 TEST_METRICS_NAME = 'test_metrics.json'
@@ -26,7 +26,7 @@ TEST_METRICS_PATH = MODEL_ROOT_FOLDER+'/'+TEST_METRICS_NAME
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-model = model = Models_V2.CNN_MLP(LR, 0.9, 0.999, 1e-08).to(device)
+model = model = Models_V2.CNN_LSTM(LR, 0.9, 0.999, 1e-08).to(device)
 
 tf = get_transforms()
 test_set = PGM_dataset(TEST_DATAST_PATH, tf)
@@ -43,7 +43,7 @@ def test():
 
         image = torch.autograd.Variable(image, requires_grad=False).to(device)
         target = torch.autograd.Variable(target, requires_grad=False).to(device)
-        meta_target = target = torch.autograd.Variable(meta_target, requires_grad=False).to(device)
+        meta_target = torch.autograd.Variable(meta_target, requires_grad=False).to(device)
 
         correct, count = model.test_(image, target, meta_target)
 

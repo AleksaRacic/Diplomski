@@ -8,7 +8,6 @@ import torch.nn.functional as F
 from .base_model import BaseModel
 from .layers import CNN
 
-
 class MLP(nn.Module):
     def __init__(self):
         super(MLP, self).__init__()
@@ -36,6 +35,6 @@ class CNN_MLP(BaseModel):
         return loss
 
     def forward(self, x):
-        features = self.conv(x.view(-1, 16, 80, 80))
-        score = self.mlp(features)
+        x = self.conv(x.view(-1, 16, 80, 80))
+        score = self.mlp(x.view(-1, 32*4*4))
         return score, None
