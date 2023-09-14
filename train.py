@@ -12,7 +12,7 @@ from data_loader import PGM_dataset
 from utils import get_transforms
 from datetime import datetime
 
-BATCH_SIZE = 16
+BATCH_SIZE = 32
 NUM_EPOCHS = 16
 IMG_SIZE = 160
 WORKERS = 4
@@ -21,7 +21,7 @@ LR = 0.0003
 VAL_FREQUENCY = 10
 
 train_dataset_path = 'Dataset/neutral/train'
-validation_dataset_path = 'Dataset/neutral/val'
+validation_dataset_path = 'Dataset/neutral/train'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -32,7 +32,7 @@ if torch.cuda.device_count() > 0:
     Change the model type here
     
 '''
-model = Models_V2.CNN_LSTM(LR, 0.9, 0.999, 1e-08).to(device)
+model = Models_V2.WildRelationalNetwork(LR, 0.9, 0.999, 1e-08).to(device)
 
 tf = get_transforms()
 
@@ -115,8 +115,10 @@ def train(epoch, save_path_model : str):
 
     model.save_model(save_path_model, epoch)
     if epoch > 5:
-        if history['val_acc'][-1] < history['val_acc'][-2] and history['val_acc'][-2] < history['val_acc'][-3]:
+        if history['val_acc'][-1] <= history['val_acc'][-2] and history['val_acc'][-2] <= history['val_acc'][-3]:
             print('Early stopping')
+            with open(train_log_name, 'a') as f:
+                f.write('Early stopping\n')
             exit(0)
         
 

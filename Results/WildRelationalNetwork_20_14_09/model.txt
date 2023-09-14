@@ -1,0 +1,58 @@
+WildRelationalNetwork(
+  (cnn): CNN(
+    (conv1): Conv2d(1, 32, kernel_size=(3, 3), stride=(2, 2))
+    (batch_norm1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu1): ReLU()
+    (conv2): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+    (batch_norm2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu2): ReLU()
+    (conv3): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+    (batch_norm3): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu3): ReLU()
+    (conv4): Conv2d(32, 32, kernel_size=(3, 3), stride=(2, 2))
+    (batch_norm4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (relu4): ReLU()
+  )
+  (tag_panels): TagPannels()
+  (group_context_panels): CombineContextPanelsPairs()
+  (group_with_answers): GroupContextPanelsWithPairs()
+  (embed_cnn_output): Linear(in_features=521, out_features=256, bias=True)
+  (g_function): DeepLinearLayerG(
+    (fc): Sequential(
+      (0): LinearBn(
+        (linear): Linear(in_features=512, out_features=256, bias=True)
+        (bn): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU()
+      )
+      (1): LinearBn(
+        (linear): Linear(in_features=256, out_features=256, bias=True)
+        (bn): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU()
+      )
+      (2): LinearBn(
+        (linear): Linear(in_features=256, out_features=256, bias=True)
+        (bn): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU()
+      )
+      (3): Dropout(p=0.5, inplace=False)
+      (4): Linear(in_features=256, out_features=256, bias=True)
+    )
+  )
+  (f_function): DeepLinearLayerF(
+    (fc): Sequential(
+      (0): LinearBn(
+        (linear): Linear(in_features=256, out_features=256, bias=True)
+        (bn): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU()
+      )
+      (1): LinearBn(
+        (linear): Linear(in_features=256, out_features=256, bias=True)
+        (bn): BatchNorm1d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (relu): ReLU()
+      )
+      (2): Dropout(p=0.5, inplace=False)
+      (3): Linear(in_features=256, out_features=13, bias=True)
+    )
+  )
+  (norm): LayerNorm((256,), eps=1e-05, elementwise_affine=True)
+)
