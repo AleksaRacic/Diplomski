@@ -45,4 +45,9 @@
 \contentsline {section}{\numberline {5.1}Тест платформа}{29}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Методологија тестирања}{30}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Резултати и дискусија}{30}{section.5.3}%
-\contentsline {chapter}{\numberline {6}Закључак }{31}{chapter.6}%
+\contentsline {subsection}{\numberline {5.3.1}Обучавање модела}{30}{subsection.5.3.1}%
+\contentsline {subsubsection}{Модел конволуционе мреже са потпуно повезаним слојевима}{30}{subsection.5.3.1}%
+\contentsline {subsubsection}{Модел конволуционе мреже са КДМ ћелијама}{31}{figure.5.1}%
+\contentsline {subsubsection}{Модел конволуционе мреже са РНН}{32}{figure.5.2}%
+\contentsline {subsection}{\numberline {5.3.2}Резултати}{33}{subsection.5.3.2}%
+\contentsline {chapter}{\numberline {6}Закључак }{34}{chapter.6}%
