@@ -1,0 +1,168 @@
+
+\documentclass[border=8pt, multi, tikz]{standalone} 
+\usepackage{import}
+\subimport{../layers/}{init}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d} %for including external image 
+
+\def\ConvColor{rgb:yellow,5;red,2.5;white,5}
+\def\ConvReluColor{rgb:yellow,5;red,5;white,5}
+\def\PoolColor{rgb:red,1;black,0.3}
+\def\UnpoolColor{rgb:blue,2;green,1;black,0.3}
+\def\FcColor{rgb:blue,5;red,4;white,5}
+\def\FcReluColor{rgb:blue,5;red,5;white,4}
+\def\SoftmaxColor{rgb:magenta,5;black,7}   
+\def\SumColor{rgb:blue,5;green,15}
+\def\Relu{rgb:cyan,5;green,15}
+\def\Picture{rgb:blue,5;green,15}
+\def\BatchNorm{rgb:pink,5;green,15}
+\def\DropoutColor{rgb:magenta,5;black,7}  
+\def\LSTMColor{rgb:red,5;black,3}  
+
+\newcommand{\copymidarrow}{\tikz \draw[-Stealth,line width=0.8mm,draw={rgb:blue,4;red,1;green,1;black,3}] (-0.3,0) -- ++(0.3,0);}
+
+\begin{document}
+\begin{tikzpicture}
+\tikzstyle{connection}=[ultra thick,every node/.style={sloped,allow upside down},draw=\edgecolor,opacity=0.7]
+\tikzstyle{copyconnection}=[ultra thick,every node/.style={sloped,allow upside down},draw={rgb:blue,4;red,1;green,1;black,3},opacity=0.7]
+
+\pic[shift={(0,0,0)}] at (0,0,0) 
+    {Box={
+        name=score1,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,0;green,10;blue,0},
+        height=5,
+        width=5,
+        depth=5
+        }
+    };
+
+\pic[shift={(0,2,0)}] at (0,0,0) 
+    {Box={
+        name=score2,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,10;green,0;blue,0},
+        height=5,
+        width=5,
+        depth=5
+        }
+    };
+
+\pic[shift={(0,4,0)}] at (0,0,0) 
+    {Box={
+        name=score3,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,0;green,0;blue,10},
+        height=5,
+        width=5,
+        depth=5
+        }
+    };
+
+\pic[shift={(0,6,0)}] at (0,0,0) 
+    {Box={
+        name=score4,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,0;green,10;blue,10},
+        height=5,
+        width=5,
+        depth=5
+        }
+    };
+
+\pic[shift={(0,8,0)}] at (0,0,0) 
+    {Box={
+        name=score5,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,10;green,0;blue,10},
+        height=5,
+        width=5,
+        depth=5
+        }
+    };
+
+\pic[shift={(0,10,0)}] at (0,0,0) 
+    {Box={
+        name=score6,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,10;green,10;blue,0},
+        height=5,
+        width=5,
+        depth=5
+        }
+    };
+
+\pic[shift={(0,12,0)}] at (0,0,0) 
+    {Box={
+        name=score7,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,6;green,1;blue,10},
+        height=5,
+        width=5,
+        depth=5
+        }
+    };
+
+\pic[shift={(0,14,0)}] at (0,0,0) 
+    {Box={
+        name=score8,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,3;green,0;blue,2},
+        height=5,
+        width=5,
+        depth=5
+        }
+    };
+
+\pic[shift={(30,7,0)}] at (0,0,0) 
+    {Box={
+        name=softmax,
+        caption=Softmax,
+        zlabel=1,
+        fill={rgb:red,7;green,3;blue,0},
+        height=40,
+        width=5,
+        depth=5
+        }
+    };
+
+\draw [connection]  (score1-east)    -- node {\midarrow} (softmax-west);
+
+\draw [connection]  (score2-east)    -- node {\midarrow} (softmax-west);
+
+\draw [connection]  (score3-east)    -- node {\midarrow} (softmax-west);
+
+\draw [connection]  (score4-east)    -- node {\midarrow} (softmax-west);
+
+\draw [connection]  (score5-east)    -- node {\midarrow} (softmax-west);
+
+\draw [connection]  (score6-east)    -- node {\midarrow} (softmax-west);
+
+\draw [connection]  (score7-east)    -- node {\midarrow} (softmax-west);
+
+\draw [connection]  (score8-east)    -- node {\midarrow} (softmax-west);
+
+\pic[shift={(35,7,0)}] at (0,0,0) 
+    {Box={
+        name=argmax,
+        caption=Argmax,
+        zlabel=1,
+        fill={rgb:red,10;green,0;blue,0},
+        height=5,
+        width=5,
+        depth=5
+        }
+    };
+
+\draw [connection]  (softmax-east)    -- node {\midarrow} (argmax-west);
+
+\end{tikzpicture}
+\end{document}

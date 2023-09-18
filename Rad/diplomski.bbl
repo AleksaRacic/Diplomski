@@ -1,0 +1,53 @@
+\begin{thebibliography}{10}
+
+\bibitem{raven1938raven}
+J.~C. Raven, ``Raven standard progressive matrices,'' {\em Journal of Cognition and Development}, 1938.
+
+\bibitem{te2001practice}
+J.~Te~Nijenhuis, O.~F. Voskuijl, and N.~B. Schijve, ``Practice and coaching on iq tests: Quite a lot of g,'' {\em International Journal of Selection and Assessment}, vol.~9, no.~4, pp.~302--308, 2001.
+
+\bibitem{barrett_measuring_2018}
+D.~G.~T. Barrett, F.~Hill, A.~Santoro, A.~S. Morcos, and T.~Lillicrap, ``Measuring abstract reasoning in neural networks,'' July 2018.
+\newblock arXiv:1807.04225 [cs, stat].
+
+\bibitem{noauthor_procedurally_2023}
+``Procedurally {Generated} {Matrices} ({PGM}) data,'' July 2023.
+\newblock original-date: 2018-06-07T12:40:21Z.
+
+\bibitem{ioannou_structural_2017}
+Y.~Ioannou, {\em Structural {Priors} in {Deep} {Neural} {Networks}}.
+\newblock PhD thesis, Sept. 2017.
+
+\bibitem{anwar_learned_2017}
+I.~Anwar and N.~Ul~Islam, ``Learned {Features} are {Better} for {Ethnicity} {Classification},'' {\em Cybernetics and Information Technologies}, vol.~17, Sept. 2017.
+
+\bibitem{noauthor_artificial_2023}
+``Artificial neural network,'' Sept. 2023.
+\newblock Page Version ID: 1175471829.
+
+\bibitem{s_mohamed_detection_2017}
+I.~S.~Mohamed, {\em Detection and {Tracking} of {Pallets} using a {Laser} {Rangefinder} and {Machine} {Learning} {Techniques}}.
+\newblock PhD thesis, Sept. 2017.
+
+\bibitem{husein_day-ahead_2019}
+M.~Husein and I.-Y. Chung, ``Day-{Ahead} {Solar} {Irradiance} {Forecasting} for {Microgrids} {Using} a {Long} {Short}-{Term} {Memory} {Recurrent} {Neural} {Network}: {A} {Deep} {Learning} {Approach},'' {\em Energies}, vol.~12, p.~1856, May 2019.
+
+\bibitem{qiu_forecasting_2020}
+J.~Qiu, B.~Wang, and C.~Zhou, ``Forecasting stock prices with long-short term memory neural network based on attention mechanism,'' {\em PLOS ONE}, vol.~15, p.~e0227222, Jan. 2020.
+
+\bibitem{kingma_adam_2017}
+D.~P. Kingma and J.~Ba, ``Adam: {A} {Method} for {Stochastic} {Optimization},'' Jan. 2017.
+\newblock arXiv:1412.6980 [cs].
+
+\bibitem{van1995python}
+G.~Van~Rossum and F.~L. Drake~Jr, {\em Python reference manual}.
+\newblock Centrum voor Wiskunde en Informatica Amsterdam, 1995.
+
+\bibitem{torch}
+R.~Collobert, K.~Kavukcuoglu, and C.~Farabet, ``Torch7: A matlab-like environment for machine learning,'' in {\em BigLearn, NIPS Workshop}, 2011.
+
+\bibitem{hoshen_iq_2017}
+D.~Hoshen and M.~Werman, ``{IQ} of {Neural} {Networks},'' Sept. 2017.
+\newblock arXiv:1710.01692 [cs].
+
+\end{thebibliography}

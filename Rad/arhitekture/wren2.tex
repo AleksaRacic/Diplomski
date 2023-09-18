@@ -1,0 +1,885 @@
+
+\documentclass[border=8pt, multi, tikz]{standalone} 
+\usepackage{import}
+\subimport{../layers/}{init}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d} %for including external image 
+
+\def\ConvColor{rgb:yellow,5;red,2.5;white,5}
+\def\ConvReluColor{rgb:yellow,5;red,5;white,5}
+\def\PoolColor{rgb:red,1;black,0.3}
+\def\UnpoolColor{rgb:blue,2;green,1;black,0.3}
+\def\FcColor{rgb:blue,5;red,4;white,5}
+\def\FcReluColor{rgb:blue,5;red,5;white,4}
+\def\SoftmaxColor{rgb:magenta,5;black,7}   
+\def\SumColor{rgb:blue,5;green,15}
+\def\Relu{rgb:cyan,5;green,15}
+\def\Picture{rgb:blue,5;green,15}
+\def\BatchNorm{rgb:pink,5;green,15}
+\def\DropoutColor{rgb:magenta,5;black,7}  
+\def\LSTMColor{rgb:red,5;black,3}  
+
+\newcommand{\copymidarrow}{\tikz \draw[-Stealth,line width=0.8mm,draw={rgb:blue,4;red,1;green,1;black,3}] (-0.3,0) -- ++(0.3,0);}
+
+\begin{document}
+\begin{tikzpicture}
+\tikzstyle{connection}=[ultra thick,every node/.style={sloped,allow upside down},draw=\edgecolor,opacity=0.7]
+\tikzstyle{copyconnection}=[ultra thick,every node/.style={sloped,allow upside down},draw={rgb:blue,4;red,1;green,1;black,3},opacity=0.7]
+
+\pic[shift={(0,0,0)}] at (0,0,0) 
+    {Box={
+        name=embedded1,
+        caption=Spojeni parovi latentnih vektora,
+        zlabel=1,
+        fill={rgb:red,0;green,10;blue,0},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(0,0,0)}] at (embedded1-east) 
+    {Box={
+        name=embedded2,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,10;green,0;blue,0},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(0,3,0)}] at (0,0,0) 
+    {Box={
+        name=embedded12,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,0;green,10;blue,0},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(0,0,0)}] at (embedded12-east) 
+    {Box={
+        name=embedded22,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,0;green,0;blue,10},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(0,6,0)}] at (0,0,0) 
+    {Box={
+        name=embedded13,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,10;green,0;blue,0},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(0,0,0)}] at (embedded13-east) 
+    {Box={
+        name=embedded23,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,0;green,10;blue,0},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+\filldraw[fill=black] (0,0) ++(2,9) circle (0.1);
+            \filldraw[fill=black] (0,1) ++(2,9) circle (0.1);
+            \filldraw[fill=black] (0,2) ++(2,9) circle (0.1);
+            \node[font=\Large, anchor=west] at (8,10) {\textcolor{black}{Deep Function G }};
+    \node[font=\Large, anchor=west] at (31,6) {\textcolor{black}{Deep Function F }};
+    
+\pic[shift={(0,14,0)}] at (0,0,0) 
+    {Box={
+        name=embedded132,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,10;green,0;blue,0},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(0,0,0)}] at (embedded132-east) 
+    {Box={
+        name=embedded222,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,0;green,0;blue,10},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(0,17,0)}] at (0,0,0) 
+    {Box={
+        name=embedded1321,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,0;green,0;blue,10},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(0,0,0)}] at (embedded1321-east) 
+    {Box={
+        name=embedded223,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,10;green,0;blue,0},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(0,20,0)}] at (0,0,0) 
+    {Box={
+        name=embedded1322,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,0;green,0;blue,10},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(0,0,0)}] at (embedded1322-east) 
+    {Box={
+        name=embedded224,
+        caption=,
+        zlabel=1,
+        fill={rgb:red,0;green,10;blue,0},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (embedded2-east) 
+    {Box={
+        name=linear12,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (embedded2-east)    -- node {\midarrow} (linear12-west);
+
+\pic[shift={(0,0,0)}] at (linear12-east) 
+    {Box={
+        name=relu12,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu12-east) 
+    {Box={
+        name=linear13,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu12-east)    -- node {\midarrow} (linear13-west);
+
+\pic[shift={(0,0,0)}] at (linear13-east) 
+    {Box={
+        name=relu13,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu13-east) 
+    {Box={
+        name=linear14,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu13-east)    -- node {\midarrow} (linear14-west);
+
+\pic[shift={(0,0,0)}] at (linear14-east) 
+    {Box={
+        name=relu14,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu14-east) 
+    {Box={
+        name=Dropout1,
+        caption=\\,
+        fill=\DropoutColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu14-east)    -- node {\midarrow} (Dropout1-west);
+
+\pic[shift={(0,0,0)}] at (Dropout1-east) 
+    {Box={
+        name=relu15,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (embedded22-east) 
+    {Box={
+        name=linear123,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (embedded22-east)    -- node {\midarrow} (linear123-west);
+
+\pic[shift={(0,0,0)}] at (linear123-east) 
+    {Box={
+        name=relu123,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu123-east) 
+    {Box={
+        name=linear124,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu123-east)    -- node {\midarrow} (linear124-west);
+
+\pic[shift={(0,0,0)}] at (linear124-east) 
+    {Box={
+        name=relu124,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu124-east) 
+    {Box={
+        name=linear125,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu124-east)    -- node {\midarrow} (linear125-west);
+
+\pic[shift={(0,0,0)}] at (linear125-east) 
+    {Box={
+        name=relu125,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu125-east) 
+    {Box={
+        name=Dropout2,
+        caption=\\,
+        fill=\DropoutColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu125-east)    -- node {\midarrow} (Dropout2-west);
+
+\pic[shift={(0,0,0)}] at (Dropout2-east) 
+    {Box={
+        name=relu1261211,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (embedded23-east) 
+    {Box={
+        name=linear124,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (embedded23-east)    -- node {\midarrow} (linear124-west);
+
+\pic[shift={(0,0,0)}] at (linear124-east) 
+    {Box={
+        name=relu124,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu124-east) 
+    {Box={
+        name=linear125,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu124-east)    -- node {\midarrow} (linear125-west);
+
+\pic[shift={(0,0,0)}] at (linear125-east) 
+    {Box={
+        name=relu125,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu125-east) 
+    {Box={
+        name=linear126,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu125-east)    -- node {\midarrow} (linear126-west);
+
+\pic[shift={(0,0,0)}] at (linear126-east) 
+    {Box={
+        name=relu126,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu126-east) 
+    {Box={
+        name=Dropout3,
+        caption=\\,
+        fill=\DropoutColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu126-east)    -- node {\midarrow} (Dropout3-west);
+
+\pic[shift={(0,0,0)}] at (Dropout3-east) 
+    {Box={
+        name=relu12700,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (embedded222-east) 
+    {Box={
+        name=linear1254,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (embedded222-east)    -- node {\midarrow} (linear1254-west);
+
+\pic[shift={(0,0,0)}] at (linear1254-east) 
+    {Box={
+        name=relu1254,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu1254-east) 
+    {Box={
+        name=linear1264,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu1254-east)    -- node {\midarrow} (linear1264-west);
+
+\pic[shift={(0,0,0)}] at (linear1264-east) 
+    {Box={
+        name=relu1264,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu1264-east) 
+    {Box={
+        name=linear1274,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu1264-east)    -- node {\midarrow} (linear1274-west);
+
+\pic[shift={(0,0,0)}] at (linear1274-east) 
+    {Box={
+        name=relu1274,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu1274-east) 
+    {Box={
+        name=Dropout4,
+        caption=\\,
+        fill=\DropoutColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu1274-east)    -- node {\midarrow} (Dropout4-west);
+
+\pic[shift={(0,0,0)}] at (Dropout4-east) 
+    {Box={
+        name=relu1275,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (embedded223-east) 
+    {Box={
+        name=linear12612,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (embedded223-east)    -- node {\midarrow} (linear12612-west);
+
+\pic[shift={(0,0,0)}] at (linear12612-east) 
+    {Box={
+        name=relu12612,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu12612-east) 
+    {Box={
+        name=linear12712,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu12612-east)    -- node {\midarrow} (linear12712-west);
+
+\pic[shift={(0,0,0)}] at (linear12712-east) 
+    {Box={
+        name=relu12712,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu12712-east) 
+    {Box={
+        name=linear12712,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu12712-east)    -- node {\midarrow} (linear12712-west);
+
+\pic[shift={(0,0,0)}] at (linear12712-east) 
+    {Box={
+        name=relu12712,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu12712-east) 
+    {Box={
+        name=Dropout5,
+        caption=\\,
+        fill=\DropoutColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu12712-east)    -- node {\midarrow} (Dropout5-west);
+
+\pic[shift={(0,0,0)}] at (Dropout5-east) 
+    {Box={
+        name=relu12713,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (embedded224-east) 
+    {Box={
+        name=linear12742,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (embedded224-east)    -- node {\midarrow} (linear12742-west);
+
+\pic[shift={(0,0,0)}] at (linear12742-east) 
+    {Box={
+        name=relu12742,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu12742-east) 
+    {Box={
+        name=linear12742,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu12742-east)    -- node {\midarrow} (linear12742-west);
+
+\pic[shift={(0,0,0)}] at (linear12742-east) 
+    {Box={
+        name=relu12742,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu12742-east) 
+    {Box={
+        name=linear12742,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu12742-east)    -- node {\midarrow} (linear12742-west);
+
+\pic[shift={(0,0,0)}] at (linear12742-east) 
+    {Box={
+        name=relu12742,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu12742-east) 
+    {Box={
+        name=Dropout6,
+        caption=\\,
+        fill=\DropoutColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu12742-east)    -- node {\midarrow} (Dropout6-west);
+
+\pic[shift={(0,0,0)}] at (Dropout6-east) 
+    {Box={
+        name=relu12743,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(23,9,0)}] at (0,0,0) 
+    {Ball={
+        name=sum1,
+        fill=\SumColor,
+        opacity=0.6,
+        radius=3.5,
+        logo=$+$
+        }
+    };
+
+\draw [connection]  (relu15-east)    -- node {\midarrow} (sum1-west);
+
+\draw [connection]  (relu1261211-east)    -- node {\midarrow} (sum1-west);
+
+\draw [connection]  (relu12700-east)    -- node {\midarrow} (sum1-west);
+
+\draw [connection]  (relu1275-east)    -- node {\midarrow} (sum1-west);
+
+\draw [connection]  (relu12713-east)    -- node {\midarrow} (sum1-west);
+
+\draw [connection]  (relu12743-east)    -- node {\midarrow} (sum1-west);
+
+\pic[shift={(2,0,0)}] at (sum1-east) 
+    {Box={
+        name=embedded3233,
+        caption=Embeded ,
+        zlabel=256,
+        fill={rgb:red,7;green,2;blue,3},
+        height=2,
+        width=10,
+        depth=2
+        }
+    };
+
+\draw [connection]  (sum1-east)    -- node {\midarrow} (embedded3233-west);
+
+\pic[shift={(2,0,0)}] at (embedded3233-east) 
+    {Box={
+        name=linear127420,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (embedded3233-east)    -- node {\midarrow} (linear127420-west);
+
+\pic[shift={(0,0,0)}] at (linear127420-east) 
+    {Box={
+        name=relu127420,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu127420-east) 
+    {Box={
+        name=linear127420,
+        caption=,
+        zlabel=256,
+        fill=\FcColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu127420-east)    -- node {\midarrow} (linear127420-west);
+
+\pic[shift={(0,0,0)}] at (linear127420-east) 
+    {Box={
+        name=relu127420,
+        caption=,
+        fill=\Relu,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (relu127420-east) 
+    {Box={
+        name=Dropout60,
+        caption=\\,
+        fill=\DropoutColor,
+        height=10,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (relu127420-east)    -- node {\midarrow} (Dropout60-west);
+
+\pic[shift={(2,0,0)}] at (Dropout60-east) 
+    {Box={
+        name=relu127430,
+        caption=Score,
+        fill=\Relu,
+        height=2,
+        width=2,
+        depth=2
+        }
+    };
+
+\draw [connection]  (Dropout60-east)    -- node {\midarrow} (relu127430-west);
+
+\end{tikzpicture}
+\end{document}
