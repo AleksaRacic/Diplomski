@@ -3,19 +3,22 @@ import Models_V2
 
 from datetime import datetime
 
+from torchvision.transforms import Compose
+from transforms import ResizeImage, ToTensor
+
 from data_loader import PGM_dataset
 from utils import get_transforms
 import torch
 import numpy as np
 from tqdm import trange
 
-BATCH_SIZE = 16
-WORKERS = 4
+BATCH_SIZE = 32
+WORKERS = 16
 
 LR = 0
 
-MODEL_ROOT_FOLDER = 'Results/CNN_LSTM_21_11_09'
-MODEL_NAME = 'CNN_LSTM_epoch_16.pth'
+MODEL_ROOT_FOLDER = 'Results/CNN_MLP_19_09_09'
+MODEL_NAME = 'CNN_MLP_19_09_09CNN_MLP_epoch_16.pth'
 MODEL_PATH = MODEL_ROOT_FOLDER+'/'+MODEL_NAME
 TEST_SAVE_NAME = 'test_acc.txt'
 TEST_METRICS_NAME = 'test_metrics.json'
@@ -26,9 +29,9 @@ TEST_METRICS_PATH = MODEL_ROOT_FOLDER+'/'+TEST_METRICS_NAME
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-model = model = Models_V2.CNN_LSTM(LR, 0.9, 0.999, 1e-08).to(device)
+model = model = Models_V2.CNN_MLP(LR, 0.9, 0.999, 1e-08).to(device)
 
-tf = get_transforms()
+tf = Compose([ResizeImage(80), ToTensor()])
 test_set = PGM_dataset(TEST_DATAST_PATH, tf)
 
 test_loader = torch.utils.data.DataLoader(test_set, batch_size=BATCH_SIZE, shuffle=False, num_workers=WORKERS, pin_memory=True)

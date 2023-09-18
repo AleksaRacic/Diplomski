@@ -37,14 +37,9 @@ class CNN_LSTM(BaseModel):
         tags[8:, 8] = 1
         return tags
 
-    def compute_loss(self, output, target, _):
-        pred = output[0]
-        loss = F.cross_entropy(pred, target)
-        return loss
-
     def forward(self, x):
         batch = x.shape[0]
         features = self.conv(x.view(-1, 1, 80, 80))
         features = torch.cat([features.view(-1, 16, 8*4*4), self.tags.unsqueeze(0).expand(batch, -1, -1)], dim=-1)
         score = self.lstm(features)
-        return score, None
+        return score
