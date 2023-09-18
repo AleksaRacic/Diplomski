@@ -3,6 +3,9 @@ import torch
 import os
 import Models_V2
 
+from torchvision.transforms import Compose
+from transforms import ResizeImage, ToTensor
+
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "max_split_size_mb:512"
 
 from tqdm import trange
@@ -13,15 +16,15 @@ from utils import get_transforms
 from datetime import datetime
 
 BATCH_SIZE = 32
-NUM_EPOCHS = 16
+NUM_EPOCHS = 32
 IMG_SIZE = 160
-WORKERS = 4
+WORKERS = 16 #Max on given server
 LR = 0.0003
 
 VAL_FREQUENCY = 10
 
 train_dataset_path = 'Dataset/neutral/train'
-validation_dataset_path = 'Dataset/neutral/train'
+validation_dataset_path = 'Dataset/neutral/val'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -34,7 +37,7 @@ if torch.cuda.device_count() > 0:
 '''
 model = Models_V2.WildRelationalNetwork(LR, 0.9, 0.999, 1e-08).to(device)
 
-tf = get_transforms()
+tf = Compose([ResizeImage(80), ToTensor()])
 
 train_set = PGM_dataset(train_dataset_path, tf)
 val_set = PGM_dataset(validation_dataset_path, tf)
@@ -51,12 +54,11 @@ def validation_accuracy():
     iter_val = iter(val_loader)
     metricsa = {'correct': [], 'count': []}
     for i in range(len(iter_val)):
-        image, target, meta_target = next(iter_val)
+        image, target = next(iter_val)
         image = torch.autograd.Variable(image, requires_grad=False).to(device)
         target = torch.autograd.Variable(target, requires_grad=False).to(device)
-        meta_target = meta_target.to(device)
 
-        loss, correct, count = model.validate_(image, target, meta_target)
+        loss, correct, count = model.validate_(image, target)
 
         metricsa['correct'].append(correct)
         metricsa['count'].append(target.size(0))
@@ -73,15 +75,14 @@ def train(epoch, save_path_model : str):
 
     for batch_idx in trange(len(train_loader_iter)):
         try:
-            image, target, meta_target = next(train_loader_iter)
+            image, target = next(train_loader_iter)
         except BadZipFile:
             continue
 
-        image = torch.autograd.Variable(image, requires_grad=True).to(device)
-        target = target.to(device)
-        meta_target = meta_target.to(device)
+        image = torch.autograd.Variable(image, requires_grad=False).to(device)
+        target = torch.autograd.Variable(target, requires_grad=False).to(device)
 
-        loss, correct, count = model.train_(image, target, meta_target)
+        loss, correct, count = model.train_(image, target)
 
         metrics['loss'].append(loss)
         metrics['correct'].append(correct)

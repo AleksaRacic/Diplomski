@@ -139,23 +139,15 @@ class WildRelationalNetwork(BaseModel):
         self.rn_embeding_size = 256
         self.embed_cnn_output = nn.Linear(self.cnn_output_size, self.rn_embeding_size)
         self.g_function = DeepLinearLayerG(self.rn_embeding_size * 2, 256)
-        self.f_function = DeepLinearLayerF(256, 13)
+        self.f_function = DeepLinearLayerF(256, 1)
         self.meta_beta = 0
         self.norm = torch.nn.LayerNorm(256)
 
         self.optimizer = optim.Adam(self.parameters(), lr=lr, betas=(beta1, beta2), eps=eps)
 
-    def compute_loss(self, output, target, meta_target):
-        pred, meta_pred = output[0], output[1]
+    def compute_loss(self, pred, target):
         target_loss = F.cross_entropy(pred, target)
-        meta_pred = torch.chunk(meta_pred, chunks=12, dim=1)
-        meta_target = torch.chunk(meta_target, chunks=12, dim=1)
-        if self.meta_beta == 0:
-            meta_target_loss = 0
-            for idx in range(0, 12):
-                meta_target_loss += F.binary_cross_entropy(F.sigmoid(meta_pred[idx]), meta_target[idx])
-        loss = target_loss + self.meta_beta * (meta_target_loss / 12)
-        return loss
+        return target_loss
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         batch_size, num_panels, height, width = x.size()
@@ -171,14 +163,12 @@ class WildRelationalNetwork(BaseModel):
 
         context_pairs = self.group_context_panels(context_panels)
         context_pairs_g_out = self.g_function(context_pairs)
-        f_out = torch.zeros(batch_size, 8, 13, device=x.device)
+        f_out = torch.zeros(batch_size, 8, device=x.device)
         for i in range(8):
             context_solution_pairs = self.group_with_answers(context_panels, candidate_panel[:, i, :])
             context_solution_pairs_g_out = self.g_function(context_solution_pairs)
             relations = context_pairs_g_out + context_solution_pairs_g_out
             relations = self.norm(relations)
-            f_out[:, i, :] = self.f_function(relations).squeeze()
- 
-        pred = torch.softmax(f_out[:,:,12], dim=1)
-        meta_pred = torch.sum(f_out[:,:,0:12], dim=1)
-        return pred, meta_pred
+            f_out[:, i] = self.f_function(relations).squeeze()
+
+        return torch.softmax(f_out, dim = 1)
