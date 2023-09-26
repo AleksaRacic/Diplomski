@@ -209,7 +209,7 @@
   \vfill
   
 	\begin{center}
-	{\large Београд, август \the\year}
+	{\large Београд, септембар \the\year}
 	\end{center}
 	\ifmaster \rmfamily \fi
   \end{titlepage}%
@@ -297,7 +297,7 @@
 %  \ifmaster \hspace*{\fill} br.\ indeksa: \@indeks \par \fi
   \vfill  
 	\begin{center}
-	{\large Београд, август \the\year}
+	{\large Београд, септембар \the\year}
 	\end{center}
 	\ifmaster  \rmfamily \fi
 	\fi
@@ -333,6 +333,7 @@
   \fi
   \null\vfil
   \secdef\@part\@spart}
+
 
 \def\@part[#1]#2{%
     \ifnum \c@secnumdepth >-2\relax
@@ -782,9 +783,7 @@
     \noindent
     \hb@xt@1.8em{\hss\@makefnmark}#1}
 
-%%\renewcommand\today{%
-%%   \ifcase \month\or January\or February\or March\or April\or May\or June\or Јул\or
-%%    August\or September\or October\or November\or December\fi \space \number\year}
+
 
 \setlength\columnsep{10\p@}
 \setlength\columnseprule{0\p@}

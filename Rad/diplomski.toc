@@ -19,13 +19,13 @@
 \contentsline {subsection}{\numberline {2.6.1}Унакрсна ентропија}{14}{subsection.2.6.1}%
 \contentsline {section}{\numberline {2.7}Оптимизатори модела}{14}{section.2.7}%
 \contentsline {subsection}{\numberline {2.7.1}Стохастички спуст (\textit {Stochastic gradient descent - SGD})}{14}{subsection.2.7.1}%
-\contentsline {subsection}{\numberline {2.7.2}Адам (\textit {\textit {Adaptive Moment Estimation - Adam}})}{15}{subsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.7.2}Адам (\textit {Adaptive Moment Estimation - Adam})}{15}{subsection.2.7.2}%
 \contentsline {section}{\numberline {2.8}Технике регуларизације и убрзавања конвергенције}{16}{section.2.8}%
 \contentsline {subsection}{\numberline {2.8.1}Изоставњање неурона (\textit {Dropout})}{16}{subsection.2.8.1}%
 \contentsline {subsection}{\numberline {2.8.2}Нормализација гомиле (\textit {Batch Normalization})}{16}{subsection.2.8.2}%
-\contentsline {section}{\numberline {2.9}Додатнe функције и слојеви}{17}{section.2.9}%
-\contentsline {subsection}{\numberline {2.9.1}Софтмакс (\textit {softmax})}{17}{subsection.2.9.1}%
-\contentsline {subsection}{\numberline {2.9.2}Функција највећег аргумента (\textit {argmax})}{17}{subsection.2.9.2}%
+\contentsline {section}{\numberline {2.9}Додатнe функције и слојеви}{16}{section.2.9}%
+\contentsline {subsubsection}{Софтмакс (\textit {softmax})}{17}{section.2.9}%
+\contentsline {subsubsection}{Функција највећег аргумента (\textit {argmax})}{17}{equation.2.7}%
 \contentsline {chapter}{\numberline {3}Коришћене технологије}{18}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Python3}{18}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Torch}{18}{section.3.2}%
@@ -33,21 +33,20 @@
 \contentsline {chapter}{\numberline {4}Опис решења}{20}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Архитектуре неуронских мрежа}{20}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}Конволуциона мрежа са потпуно повезаним слојевима}{21}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Конволуциона мрежа са ДКМ блоковима}{22}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.2}Конволуциона мрежа са ДКМ блоковима}{21}{subsection.4.1.2}%
 \contentsline {subsection}{\numberline {4.1.3}Конволуциона мрежа са РНН}{22}{subsection.4.1.3}%
 \contentsline {section}{\numberline {4.2}Архитектурa софтвера}{26}{section.4.2}%
-\contentsline {subsubsection}{Основни (базни) модел}{26}{figure.4.6}%
-\contentsline {subsubsection}{Модел конволуционе мреже са потпуно повезаним слојевима}{27}{algocf.3}%
-\contentsline {subsubsection}{Модел конволуционе мреже са ДКМ ћелијама}{27}{algocf.3}%
-\contentsline {subsubsection}{Модел конволуционе мреже са релационим слојевима}{27}{algocf.3}%
+\contentsline {subsection}{\numberline {4.2.1}Основни (базни) модел}{26}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Модел конволуционе мреже са потпуно повезаним слојевима}{27}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Модел конволуционе мреже са ДКМ ћелијама}{27}{subsection.4.2.3}%
+\contentsline {subsection}{\numberline {4.2.4}Модел конволуционе мреже са релационим слојевима}{27}{subsection.4.2.4}%
 \contentsline {section}{\numberline {4.3}Функција губитка, оптимизатор и учитавање података}{28}{section.4.3}%
 \contentsline {chapter}{\numberline {5}Резултати и дискусија}{29}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Тест платформа}{29}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Методологија тестирања}{30}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Резултати и дискусија}{30}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Обучавање модела}{30}{subsection.5.3.1}%
-\contentsline {subsubsection}{Модел конволуционе мреже са потпуно повезаним слојевима}{30}{subsection.5.3.1}%
-\contentsline {subsubsection}{Модел конволуционе мреже са КДМ ћелијама}{31}{figure.5.1}%
-\contentsline {subsubsection}{Модел конволуционе мреже са РНН}{32}{figure.5.2}%
-\contentsline {subsection}{\numberline {5.3.2}Резултати}{33}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.3}Обучавање модела}{30}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Модел конволуционе мреже са потпуно повезаним слојевима}{30}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Модел конволуционе мреже са КДМ ћелијама}{31}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Модел конволуционе мреже са РНН}{32}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Aнализа резултата}{33}{section.5.4}%
 \contentsline {chapter}{\numberline {6}Закључак }{34}{chapter.6}%

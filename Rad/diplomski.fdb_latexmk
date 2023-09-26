@@ -1,20 +1,20 @@
 # Fdb version 4
-["bibtex diplomski"] 1695053018 "diplomski.aux" "diplomski.bbl" "diplomski" 1695054152 0
-  "./diplomski.bib" 1694947204 24769 804ea65a716157e594844a6b319a4c48 ""
+["bibtex diplomski"] 1695317049 "diplomski.aux" "diplomski.bbl" "diplomski" 1695317838 0
+  "./diplomski.bib" 1695313051 26904 568f405d2440f1a61b3c173573ce1cf2 ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/base/ieeetr.bst" 1292289607 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
-  "diplomski.aux" 1695054151 23480 50ed7e287d062b38c337020388465a0a "pdflatex"
+  "diplomski.aux" 1695317837 23680 80cb9dbfa86f532ae551023aafe97da2 "pdflatex"
   (generated)
   "diplomski.bbl"
   "diplomski.blg"
   (rewritten before read)
-["pdflatex"] 1695054149 "/Users/racicaleksa/Projects/Diplomski/Rad/diplomski.tex" "diplomski.pdf" "diplomski" 1695054152 0
+["pdflatex"] 1695317835 "/Users/racicaleksa/Projects/Diplomski/Rad/diplomski.tex" "diplomski.pdf" "diplomski" 1695317838 0
   "../Results/CNN_LSTM_21_11_09/accuracy.png" 1695038902 37264 09646ae0790db4d9d26dd6e5770d2afa ""
   "../Results/CNN_MLP_19_09_09/accuracy.png" 1695038902 47803 8df61cf5e17bcd16bc6bd0a6fdb0a57a ""
   "../Results/WildRelationalNetwork_22_17_09/accuracy.png" 1695051149 54011 ed7ce68020b542c9b7a12758e5c70f2d ""
   "/Users/racicaleksa/Library/texlive/2023/texmf-var/fonts/tfm/lh/lh-t2a/lass1200.tfm" 1694725704 3328 2be4722f1b98ee4842bc3d7c90c43abf ""
   "/Users/racicaleksa/Library/texlive/2023/texmf-var/fonts/tfm/lh/lh-t2a/lass1440.tfm" 1694725707 3316 74d2bae6468930ee61fdea11798112e7 ""
   "/Users/racicaleksa/Library/texlive/2023/texmf-var/fonts/tfm/lh/lh-t2a/lass2074.tfm" 1694725710 3328 d279ddfe9733cd3d5efc50ce4ddf7387 ""
-  "/Users/racicaleksa/Projects/Diplomski/Rad/diplomski.tex" 1695054149 84878 6bcbd67500bd430bfdafafbf4fab68b6 ""
+  "/Users/racicaleksa/Projects/Diplomski/Rad/diplomski.tex" 1695317835 89082 7dc9f4512722884a483aa2cd7649d2e3 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc" 1136849721 3141 82d5616418ed8d5de703b3951bedecb4 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gentium-tug/gentium-t2a-sc.enc" 1431552586 2536 2b4576e43500c19c6c35f4d2e403fb27 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/gentium-tug/gentium-t2a.enc" 1431552586 2331 9cb94255973a896a5039d3dbabfc5ab6 ""
@@ -288,12 +288,12 @@
   "arhitekture/wren1.pdf" 1695034290 65118 b13da75261c1fd191b9d809a65c56dd9 ""
   "arhitekture/wren2.pdf" 1694902576 53759 6edfe663c75b8aa56e5f8807a657886c ""
   "arhitekture/wren3.pdf" 1694950579 23756 38800ce3aa4fae0c09d6e7cb7c289231 ""
-  "diplomski.aux" 1695054151 23480 50ed7e287d062b38c337020388465a0a "pdflatex"
-  "diplomski.bbl" 1695053018 2504 acef0e0c6f331d798b61b2c3493365ee "bibtex diplomski"
-  "diplomski.out" 1695054151 9996 12accfe14ffbe043f29d800b950530f6 "pdflatex"
-  "diplomski.tex" 1695054149 84878 6bcbd67500bd430bfdafafbf4fab68b6 ""
-  "diplomski.toc" 1695054151 5715 ff5ce7932c5dd0a6a67920a8ec089388 "pdflatex"
-  "etf.cls" 1618223566 25111 72ec76e55e658ee206d0b8b22de920a3 ""
+  "diplomski.aux" 1695317837 23680 80cb9dbfa86f532ae551023aafe97da2 "pdflatex"
+  "diplomski.bbl" 1695317049 2614 7c3286d68f6598b4f31d99b0810c30d3 "bibtex diplomski"
+  "diplomski.out" 1695317837 12057 18c9c63797fc29a78173003d5e61b04f "pdflatex"
+  "diplomski.tex" 1695317835 89082 7dc9f4512722884a483aa2cd7649d2e3 ""
+  "diplomski.toc" 1695317837 5711 742a37d15a7b9393acc2cea8c42e3d4f "pdflatex"
+  "etf.cls" 1695311387 24927 cd014779941ed8aaa26f8ece358b75c2 ""
   "images/LSTM.png" 1694873267 35652 672ec473ec8a219340e1ffd7776e8c47 ""
   "images/cnn.png" 1694814998 38008 0c410ae62bc9e1043e70b7c38d913b62 ""
   "images/convolution.png" 1694813618 52054 fc67c6dea7380bddead413a62c126a4c ""

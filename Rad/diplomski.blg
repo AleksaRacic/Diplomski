@@ -7,36 +7,36 @@ Warning--entry type for "noauthor_procedurally_2023" isn't style-file defined
 --line 47 of file diplomski.bib
 Warning--empty school in ioannou_structural_2017
 Warning--empty school in s_mohamed_detection_2017
-You've used 14 entries,
+You've used 15 entries,
             1876 wiz_defined-function locations,
-            549 strings with 5489 characters,
-and the built_in function-call counts, 2561 in all, are:
-= -- 247
-> -- 104
+            552 strings with 5558 characters,
+and the built_in function-call counts, 2675 in all, are:
+= -- 259
+> -- 105
 < -- 0
-+ -- 41
++ -- 42
 - -- 27
-* -- 160
-:= -- 373
-add.period$ -- 22
-call.type$ -- 14
-change.case$ -- 11
+* -- 165
+:= -- 384
+add.period$ -- 24
+call.type$ -- 15
+change.case$ -- 12
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 130
-empty$ -- 263
+cite$ -- 17
+duplicate$ -- 134
+empty$ -- 281
 format.name$ -- 27
-if$ -- 627
+if$ -- 659
 int.to.chr$ -- 0
-int.to.str$ -- 14
+int.to.str$ -- 15
 missing$ -- 8
-newline$ -- 53
+newline$ -- 57
 num.names$ -- 12
-pop$ -- 68
+pop$ -- 76
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 83
+skip$ -- 86
 stack$ -- 0
 substring$ -- 56
 swap$ -- 41
@@ -46,6 +46,6 @@ top$ -- 0
 type$ -- 0
 warning$ -- 2
 while$ -- 17
-width$ -- 16
-write$ -- 128
+width$ -- 17
+write$ -- 136
 (There were 3 warnings)
